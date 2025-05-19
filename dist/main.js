@@ -1,0 +1,79 @@
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/main.js":
+/*!*********************!*\
+  !*** ./src/main.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n\nfunction showPage(pageId) {\n  document.querySelectorAll('.container').forEach(function (page) {\n    return page.classList.remove('active');\n  });\n  document.getElementById(pageId).classList.add('active');\n}\nfunction resetForm() {\n  document.getElementById('suhu').value = '';\n  document.getElementById('kecepatan').value = '';\n  document.getElementById('arah').value = '';\n  document.getElementById('hasil').innerHTML = '';\n}\nfunction tampilkanModal(pesan) {\n  var inputPage = document.getElementById('inputPage');\n  if (!inputPage.classList.contains('active')) return;\n  var icon = document.getElementById('iconModal');\n  var zonaInfo = document.getElementById('zonaInfoText');\n  zonaInfo.classList.remove(\"bg-hijau\", \"bg-kuning\", \"bg-merah\");\n  if (pesan.includes(\"Tidak ada Upwelling\")) {\n    icon.src = \"https://cdn-icons-png.flaticon.com/512/753/753345.png\";\n    zonaInfo.innerText = \"Zona kurang direkomendasikan untuk aktivitas penangkapan ikan.\";\n    zonaInfo.classList.add(\"bg-merah\");\n  } else if (pesan.includes(\"Upwelling Sedang\")) {\n    icon.src = \"https://cdn-icons-png.flaticon.com/512/1828/1828665.png\";\n    zonaInfo.innerText = \"Zona cukup baik untuk melaut, perhatikan kondisi sekitar.\";\n    zonaInfo.classList.add(\"bg-kuning\");\n  } else if (pesan.includes(\"Upwelling Tinggi\")) {\n    icon.src = \"https://cdn-icons-png.flaticon.com/512/845/845646.png\";\n    zonaInfo.innerText = \"Zona sangat baik untuk melaut, potensi tinggi berkumpulnya ikan.\";\n    zonaInfo.classList.add(\"bg-hijau\");\n  } else {\n    icon.src = \"\";\n    zonaInfo.innerText = \"\";\n  }\n  document.getElementById('hasilModalText').innerText = pesan;\n  document.getElementById('popupModal').style.display = 'block';\n}\nfunction tutupModal() {\n  document.getElementById('popupModal').style.display = 'none';\n}\nwindow.onclick = function (event) {\n  var modal = document.getElementById('popupModal');\n  if (event.target === modal) modal.style.display = 'none';\n};\nfunction cekUpwelling() {\n  var suhu = parseFloat(document.getElementById('suhu').value);\n  var kecepatan = parseFloat(document.getElementById('kecepatan').value);\n  var arah = document.getElementById('arah').value;\n  if (isNaN(suhu) || isNaN(kecepatan)) {\n    document.getElementById('hasil').innerHTML = 'Harap masukkan nilai yang valid.';\n    return;\n  }\n  var suhuRendah = 0,\n    suhuSedang = 0,\n    suhuTinggi = 0;\n  var kecepatanRendah = 0,\n    kecepatanSedang = 0,\n    kecepatanTinggi = 0;\n  var searah = 0,\n    tidaksearah = 0;\n\n  // Fungsi keanggotaan untuk suhu\n  if (suhu <= 22.53860000) {\n    suhuRendah = 1;\n  } else if (suhu >= 22.53860000 && suhu <= 29.30632500) {\n    suhuRendah = (29.30632500 - suhu) / (29.30632500 - 22.53860000);\n  } else {\n    suhuRendah = 0;\n  }\n  console.log(\"Suhu Rendah: \".concat(suhuRendah));\n  if (suhu <= 22.53860000 || suhu >= 31.02681000) {\n    suhuSedang = 0;\n  } else if (suhu >= 22.53860000 && suhu <= 29.30632500) {\n    suhuSedang = (suhu - 22.53860000) / (29.30632500 - 22.53860000);\n  } else {\n    suhuSedang = (31.02681000 - suhu) / (31.02681000 - 29.30632500);\n  }\n  console.log(\"Suhu Sedang: \".concat(suhuSedang));\n  if (suhu <= 29.30632500) {\n    suhuTinggi = 0;\n  } else if (suhu >= 29.30632500 && suhu <= 31.02681000) {\n    suhuTinggi = (suhu - 29.30632500) / (31.02681000 - 29.30632500);\n  } else {\n    suhuTinggi = 1;\n  }\n  console.log(\"Suhu Tinggi: \".concat(suhuTinggi));\n  // Fungsi keanggotaan untuk kecepatan\n  if (kecepatan <= 5.04583300) {\n    kecepatanRendah = 1;\n  } else if (kecepatan >= 5.04583300 && kecepatan <= 6.71456071) {\n    kecepatanRendah = (6.71456071 - kecepatan) / (6.71456071 - 5.04583300);\n  } else {\n    kecepatanRendah = 0;\n  }\n  console.log(\"Kecepatan Rendah: \".concat(kecepatanRendah));\n  if (kecepatan <= 5.04583300 || kecepatan >= 9.13453500) {\n    kecepatanSedang = 0;\n  } else if (kecepatan >= 5.04583300 && kecepatan <= 6.71456071) {\n    kecepatanSedang = (kecepatan - 5.04583300) / (6.71456071 - 5.04583300);\n  } else {\n    kecepatanSedang = (9.13453500 - kecepatan) / (9.13453500 - 6.71456071);\n  }\n  console.log(\"Kecepatan Sedang: \".concat(kecepatanSedang));\n  if (kecepatan <= 6.71456071) {\n    kecepatanTinggi = 0;\n  } else if (kecepatan >= 6.71456071 && kecepatan <= 9.13453500) {\n    kecepatanTinggi = (kecepatan - 6.71456071) / (9.13453500 - 6.71456071);\n  } else {\n    kecepatanTinggi = 1;\n  }\n  console.log(\"Kecepatan Tinggi: \".concat(kecepatanTinggi));\n  // Fungsi keanggotaan untuk arah\n  if (arah === 'searah') {\n    searah = 1;\n  } else if (arah === 'tidak') {\n    tidaksearah = 1;\n  }\n  console.log(\"Arah Angin Searah: \".concat(searah));\n  console.log(\"Arag Angin Tidak Searah: \".concat(tidaksearah));\n\n  // Logika untuk menghitung α (alpha) berdasarkan aturan \n  var a1 = Math.min(suhuRendah, kecepatanTinggi, searah);\n  console.log(\"a1: \".concat(a1));\n  var z1 = 0;\n  if (a1 == 1) {\n    z1 = 100;\n  } else if (a1 >= 0 && a1 < 1) {\n    z1 = a1 * 30 + 70;\n  } else if (a1 == 0) {\n    z1 = 70;\n  }\n  console.log(\"z1: \".concat(z1));\n  var a2 = Math.min(suhuRendah, kecepatanTinggi, tidaksearah);\n  console.log(\"a2: \".concat(a2));\n  var z2 = 0;\n  if (a2 == 0) {\n    z2 = 100;\n  } else if (a2 >= 0 && a2 < 1) {\n    z2 = Math.max(a2 * 40 + 30, 100 - a2 * 30);\n  }\n  console.log(\"z2: \".concat(z2));\n  var a3 = Math.min(suhuRendah, kecepatanSedang, searah);\n  console.log(\"a3: \".concat(a3));\n  var z3 = 0;\n  if (a3 == 0) {\n    z3 = 100;\n  } else if (a3 >= 0 && a3 < 1) {\n    z3 = Math.max(a3 * 40 + 30, 100 - a3 * 30);\n  }\n  console.log(\"z3: \".concat(z3));\n  var a4 = Math.min(suhuRendah, kecepatanSedang, tidaksearah);\n  console.log(\"a4: \".concat(a4));\n  var z4 = 0;\n  if (a4 == 0) {\n    z4 = 100;\n  } else if (a4 >= 0 && a4 < 1) {\n    z4 = Math.max(a4 * 40 + 30, 100 - a4 * 30);\n  }\n  console.log(\"z4: \".concat(z4));\n  var a5 = Math.min(suhuRendah, kecepatanRendah, searah);\n  console.log(\"a5: \".concat(a5));\n  var z5 = 0;\n  if (a5 == 0) {\n    z5 = 100;\n  } else if (a5 >= 0 && a5 < 1) {\n    z5 = Math.max(a5 * 40 + 30, 100 - a5 * 30);\n  }\n  console.log(\"z5: \".concat(z5));\n  var a6 = Math.min(suhuRendah, kecepatanRendah, tidaksearah);\n  console.log(\"a6: \".concat(a6));\n  var z6 = 0;\n  if (a6 == 1) {\n    z6 = 300;\n  } else if (a6 >= 0 && a6 < 1) {\n    z6 = 70 - a6 * 40;\n  } else if (a6 == 0) {\n    z6 = 70;\n  }\n  console.log(\"z6: \".concat(z6));\n  var a7 = Math.min(suhuSedang, kecepatanTinggi, searah);\n  console.log(\"a7: \".concat(a7));\n  var z7 = 0;\n  if (a7 == 0) {\n    z7 = 100;\n  } else if (a7 >= 0 && a7 < 1) {\n    z7 = Math.max(a7 * 40 + 30, 100 - a7 * 30);\n  }\n  console.log(\"z7: \".concat(z7));\n  var a8 = Math.min(suhuSedang, kecepatanTinggi, tidaksearah);\n  console.log(\"a8: \".concat(a8));\n  var z8 = 0;\n  if (a8 == 0) {\n    z8 = 100;\n  } else if (a8 >= 0 && a8 < 1) {\n    z8 = Math.max(a8 * 40 + 30, 100 - a8 * 30);\n  }\n  console.log(\"z8: \".concat(z8));\n  var a9 = Math.min(suhuSedang, kecepatanSedang, searah);\n  console.log(\"a9: \".concat(a9));\n  var z9 = 0;\n  if (a9 == 0) {\n    z9 = 100;\n  } else if (a9 >= 0 && a9 < 1) {\n    z9 = Math.max(a9 * 40 + 30, 100 - a9 * 30);\n  }\n  console.log(\"z9: \".concat(z9));\n  var a10 = Math.min(suhuSedang, kecepatanSedang, tidaksearah);\n  console.log(\"a10: \".concat(a10));\n  var z10 = 0;\n  if (a10 == 1) {\n    z10 = 300;\n  } else if (a10 >= 0 && a10 < 1) {\n    z10 = 70 - a10 * 40;\n  } else if (a10 == 0) {\n    z10 = 70;\n  }\n  console.log(\"z10: \".concat(z10));\n  var a11 = Math.min(suhuSedang, kecepatanRendah, searah);\n  console.log(\"a11: \".concat(a11));\n  var z11 = 0;\n  if (a11 == 1) {\n    z11 = 300;\n  } else if (a11 >= 0 && a11 < 1) {\n    z11 = 70 - a11 * 40;\n  } else if (a11 == 0) {\n    z11 = 70;\n  }\n  console.log(\"z11: \".concat(z11));\n  var a12 = Math.min(suhuSedang, kecepatanRendah, tidaksearah);\n  console.log(\"a12: \".concat(a12));\n  var z12 = 0;\n  if (a12 == 1) {\n    z12 = 300;\n  } else if (a12 >= 0 && a12 < 1) {\n    z12 = 70 - a12 * 40;\n  } else if (a12 == 0) {\n    z12 = 70;\n  }\n  console.log(\"z12: \".concat(z12));\n  var a13 = Math.min(suhuTinggi, kecepatanTinggi, searah);\n  console.log(\"a13: \".concat(a13));\n  var z13 = 0;\n  if (a13 == 0) {\n    z13 = 100;\n  } else if (a13 >= 0 && a13 < 1) {\n    z13 = Math.max(a13 * 40 + 30, 100 - a13 * 30);\n  }\n  console.log(\"z13: \".concat(z13));\n  var a14 = Math.min(suhuTinggi, kecepatanTinggi, tidaksearah);\n  console.log(\"a14: \".concat(a14));\n  var z14 = 0;\n  if (a14 == 1) {\n    z14 = 300;\n  } else if (a14 >= 0 && a14 < 1) {\n    z14 = 70 - a14 * 40;\n  } else if (a14 == 0) {\n    z14 = 70;\n  }\n  console.log(\"z14: \".concat(z14));\n  var a15 = Math.min(suhuTinggi, kecepatanSedang, searah);\n  console.log(\"a15: \".concat(a15));\n  var z15 = 0;\n  if (a15 == 1) {\n    z15 = 300;\n  } else if (a15 >= 0 && a15 < 1) {\n    z15 = 70 - a15 * 40;\n  } else if (a15 == 0) {\n    z15 = 70;\n  }\n  console.log(\"z15: \".concat(z15));\n  var a16 = Math.min(suhuTinggi, kecepatanSedang, tidaksearah);\n  console.log(\"a16: \".concat(a16));\n  var z16 = 0;\n  if (a16 == 1) {\n    z16 = 300;\n  } else if (a16 >= 0 && a16 < 1) {\n    z16 = 70 - a16 * 40;\n  } else if (a16 == 0) {\n    z16 = 70;\n  }\n  console.log(\"z16: \".concat(z16));\n  var a17 = Math.min(suhuTinggi, kecepatanRendah, searah);\n  console.log(\"a17: \".concat(a17));\n  var z17 = 0;\n  if (a17 == 1) {\n    z17 = 300;\n  } else if (a17 >= 0 && a17 < 1) {\n    z17 = 70 - a17 * 40;\n  } else if (a17 == 0) {\n    z17 = 70;\n  }\n  console.log(\"z17: \".concat(z17));\n  var a18 = Math.min(suhuTinggi, kecepatanRendah, tidaksearah);\n  console.log(\"a18: \".concat(a18));\n  var z18 = 0;\n  if (a18 == 1) {\n    z18 = 300;\n  } else if (a18 >= 0 && a18 < 1) {\n    z18 = 70 - a18 * 40;\n  } else if (a18 == 0) {\n    z18 = 70;\n  }\n  console.log(\"z18: \".concat(z18));\n  var totalAlpha = a1 + a2 + a3 + a4 + a5 + a6 + a7 + a8 + a9 + a10 + a11 + a12 + a13 + a14 + a15 + a16 + a17 + a18;\n  console.log(\"Total Alpha: \".concat(totalAlpha));\n\n  // Pastikan totalAlpha tidak nol sebelum melakukan pembagian\n  var hasil = 0;\n  if (totalAlpha > 0) {\n    hasil = (a1 * z1 + a2 * z2 + a3 * z3 + a4 * z4 + a5 * z5 + a6 * z6 + a7 * z7 + a8 * z8 + a9 * z9 + a10 * z10 + a11 * z11 + a12 * z12 + a13 * z13 + a14 * z14 + a15 * z15 + a16 * z16 + a17 * z17 + a18 * z18) / totalAlpha;\n  }\n  console.log(\"hasil Z: \".concat(hasil));\n\n  // Fungsi keanggotaan untuk upwelling\n  var upwellingTidak = 0,\n    upwellingSedang = 0,\n    upwellingTinggi = 0;\n  if (hasil <= 30) {\n    upwellingTidak = 1;\n  } else if (hasil > 30 && hasil < 70) {\n    upwellingTidak = (70 - hasil) / (70 - 30);\n  } else {\n    upwellingTidak = 0;\n  }\n  console.log(\"Tidak ada Upwelling: \".concat(upwellingTidak));\n  if (hasil <= 30 || hasil >= 100) {\n    upwellingSedang = 0;\n  } else if (hasil > 30 && hasil < 70) {\n    upwellingSedang = (hasil - 30) / (70 - 30);\n  } else {\n    upwellingSedang = (100 - hasil) / (100 - 70);\n  }\n  console.log(\"Upwelling Sedang: \".concat(upwellingSedang));\n  if (hasil < 70) {\n    upwellingTinggi = 0;\n  } else if (hasil >= 70 && hasil < 100) {\n    upwellingTinggi = (hasil - 70) / (100 - 70);\n  } else {\n    upwellingTinggi = 1;\n  }\n  console.log(\"Upwelling Tinggi: \".concat(upwellingTinggi));\n  var kesimpulan = '';\n  if (upwellingTidak > upwellingSedang && upwellingTidak > upwellingTinggi) {\n    kesimpulan = 'Tidak ada Upwelling';\n  } else if (upwellingSedang > upwellingTidak && upwellingSedang > upwellingTinggi) {\n    kesimpulan = 'Ada Upwelling Sedang';\n  } else if (upwellingTinggi > upwellingSedang && upwellingTinggi > upwellingTidak) {\n    kesimpulan = 'Ada Upwelling Tinggi';\n  }\n\n  // Menampilkan hasil prediksi dan kesimpulan\n  tampilkanModal(\"Prediksi: \".concat(kesimpulan));\n  console.log(\"Hasil: \".concat(hasil, \", Kesimpulan: \").concat(kesimpulan));\n}\n\n// === Pendaftaran Service Worker untuk PWA ===\nif ('serviceWorker' in navigator) {\n  window.addEventListener('load', function () {\n    navigator.serviceWorker.register('sw.js').then(function (reg) {\n      return console.log('✅ Service Worker terdaftar:', reg.scope);\n    })[\"catch\"](function (err) {\n      return console.error('❌ Gagal mendaftar Service Worker:', err);\n    });\n  });\n}\n\n//# sourceURL=webpack://upwellcheck/./src/main.js?");
+
+/***/ }),
+
+/***/ "./src/styles.css":
+/*!************************!*\
+  !*** ./src/styles.css ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://upwellcheck/./src/styles.css?");
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/main.js");
+/******/ 	
+/******/ })()
+;

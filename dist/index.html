@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Prediksi Upwelling - Logika Fuzzy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="UpwellCheck.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#00796b" />
+<script defer src="/UpwellCheck/main.js"></script><link href="/UpwellCheck/main.css" rel="stylesheet"></head>
+<body>
+  <div class="container active" id="homePage">
+    <div class="header-upwelling">
+      <img src="UpwellCheck.png" alt="Logo Upwelling" class="logo-upwelling">
+      <h1 class="main-title">Prediksi Tingkat Upwelling</h1>
+      <p class="sub-title">klasifikasi zona upwelling berdasarkan suhu dan arah angin</p>
+    </div>
+
+    <hr>
+    <h4 style="text-align:center; color:#00796b; margin: 6px 0;">Peta Zona Penelitian Upwelling</h4>
+    <div class="map-container">
+      <img src="peta.jpg" alt="Peta Lokasi Penelitian">
+    </div>
+
+    <div class="subsection">
+      <p><strong>Simbol di Peta:</strong></p>
+      <ul style="font-size: 0.85rem; margin: 0 0 4px 20px;">
+        <li>🔵 Titik biru: Lokasi pengambilan data</li>
+        <li>🔴 Lingkaran: Area observasi</li>
+        <li>📍 Garis merah: Searah dengan garis pantai</li>
+      </ul>
+    </div>
+
+    <div class="subsection" style="text-align: center;">
+      <strong>Cek Data Real Time</strong>
+      <a href="https://peta-maritim.bmkg.go.id/ofs/" target="_blank">Kunjungi Situs BMKG</a>
+    </div>
+
+    <button onclick="showPage('inputPage')">Masuk ke Input Data</button>
+  </div>
+
+  <div class="container" id="inputPage">
+    <h2>Input Data Upwelling</h2>
+    <h3 style="color: #00796b; text-align: center; margin-bottom: 10px;">🧪 Data Observasi Laut</h3>
+    <form onsubmit="event.preventDefault(); cekUpwelling();">
+      <label for="suhu" title="Diukur dalam derajat Celsius">Suhu Permukaan Laut (°C):</label>
+      <input type="number" id="suhu" name="suhu" required step="0.1">
+
+      <label for="kecepatan">Kecepatan Angin (m/s):</label>
+      <input type="number" id="kecepatan" name="kecepatan" required step="0.01">
+
+      <label for="arah">Arah Angin:</label>
+      <select id="arah" name="arah" required>
+        <option value="searah">Searah Garis Pantai</option>
+        <option value="tidak">Tidak Searah Garis Pantai</option>
+      </select>
+
+      <button type="submit">🔍 Cek Kondisi Upwelling</button>
+      <button type="button" onclick="resetForm()">♻️ Reset</button>
+      <button type="button" onclick="showPage('homePage')">🏠 Halaman Awal</button>
+    </form>
+    <div id="hasil" style="text-align: center;"></div>
+  </div>
+
+  <div id="popupModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="tutupModal()">&times;</span>
+      <img id="iconModal" class="popup-icon" src="" alt="Icon">
+      <h3>Hasil Prediksi</h3>
+      <p id="hasilModalText">...</p>
+      <p id="zonaInfoText" style="font-style: italic; color: #444;"></p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 - Aplikasi Prediksi Upwelling Laut | Universitas Airlangga
+  </footer>
+
+</body>
+</html>
