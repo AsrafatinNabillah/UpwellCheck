@@ -2,18 +2,19 @@
   "name": "UpwellCheck",
   "short_name": "Upwell",
   "description": "Aplikasi Prediksi Upwelling Laut",
-  "start_url": "index.html",
+  "start_url": "/UpwellCheck/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#00796b",
+  "scope": "/UpwellCheck/",
   "icons": [
     {
-      "src": "icons/icon-192x192.png",
+      "src": "/UpwellCheck/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icons/icon-512x512.png",
+      "src": "/UpwellCheck/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
