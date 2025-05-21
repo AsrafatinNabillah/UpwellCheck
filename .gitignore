@@ -1,0 +1,15 @@
+# Hapus folder node_modules dari Git
+node_modules/
+
+# Folder hasil deploy gh-pages yang bermasalah
+.cache/
+
+# Folder hasil build lokal (optional, tergantung kamu ingin commit hasil build atau tidak)
+dist/
+
+# File log dan sistem
+*.log
+
+# Konfigurasi sistem atau environment lokal
+.env
+.DS_Store
