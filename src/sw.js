@@ -2,16 +2,17 @@ self.addEventListener("install", event => {
   event.waitUntil(
     caches.open("v1").then(cache => {
       return cache.addAll([
-        "/",
-        "/index.html",
-        "/style.css",
-        "/main.js",
-        "/peta.jpg",
-        "/ocean.png",
-        "/UpwellCheck.png",
-        "/manifest.json",
-        "/icons/icon-192x192.png",
-        "/icons/icon-512x512.png"
+        "/UpwellCheck/",
+        "/UpwellCheck/index.html",
+        "/UpwellCheck/main.css",
+        "/UpwellCheck/main.js",
+        "/UpwellCheck/peta.jpg",
+        "/UpwellCheck/ocean.png",
+        "/UpwellCheck/UpwellCheck.png",
+        "/UpwellCheck/manifest.json",
+        "/UpwellCheck/icon-192x192.png",
+        "/UpwellCheck/icon-512x512.png",
+        "/UpwellCheck/sw.js"
       ]);
     })
   );
